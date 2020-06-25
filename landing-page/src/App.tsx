@@ -6,7 +6,21 @@ import Beacon from './beacon-logo.svg';
 import AirGap from './airgap_logo.svg';
 import { FaDiscord, FaTelegram } from 'react-icons/fa';
 
-import { Heading, Stack, Flex, Box, Grid, Image, Link, Text, Button } from '@chakra-ui/core';
+import {
+  Heading,
+  Stack,
+  Flex,
+  Box,
+  Grid,
+  Image,
+  Link,
+  Text,
+  Button,
+  List,
+  ListItem,
+  ListIcon,
+  AspectRatioBox,
+} from '@chakra-ui/core';
 
 const App = () => {
   return (
@@ -41,25 +55,71 @@ const App = () => {
         </Box>
       </Grid>
       <Grid>
-        <Box w="100%" paddingTop="40px" paddingBottom="40px" textAlign="center" bg="#F9F9F9">
-          Enable Tezos Tips on any website or platform. Use your <b>mobile wallet</b> to tip. Funds are transferred
-          directly from one user to the other. TzTip has no access to your balance.
+        <Box w="100%" padding="40px" textAlign="center" bg="#F9F9F9">
+          Enable Tezos Tips on any website or platform. Use <b>your wallet</b> to tip. Funds are transferred directly
+          from one user to the other. TzTip has no access to your balance.
         </Box>
       </Grid>
       <Grid>
-        <Box w="100%" paddingTop="40px" paddingBottom="40px" textAlign="center">
+        <Box w="100%" padding="40px" textAlign="center">
           <Flex justify="center" paddingBottom="20px">
             <Heading as="h2" size="md">
-              How it works
+              How it works (Discord, desktop)
             </Heading>
           </Flex>
           <Flex justify="center">
-            <iframe width="550" height="310" src="https://www.youtube.com/embed/jprOA6Paq4o"></iframe>
+            <iframe width="550" height="310" src="https://www.youtube.com/embed/QP3UJtcpSxM"></iframe>
+          </Flex>
+        </Box>
+      </Grid>
+
+      <Grid>
+        <Box w="100%" padding="40px" textAlign="center" bg="#F9F9F9">
+          <Heading as="h2" size="md" paddingBottom="50px">
+            Features
+          </Heading>
+          <List spacing={6}>
+            <ListItem>
+              <ListIcon icon="check-circle" color="green.500" />
+              Control your own private key
+            </ListItem>
+            <ListItem>
+              <ListIcon icon="check-circle" color="green.500" />
+              Send transactions, delegation requests and contract calls
+            </ListItem>
+            <ListItem>
+              <ListIcon icon="check-circle" color="green.500" />
+              Sign arbitrary messages
+            </ListItem>
+          </List>
+        </Box>
+      </Grid>
+      <Grid>
+        <Box w="100%" padding="40px" textAlign="center">
+          <Flex justify="center" paddingBottom="20px">
+            <Heading as="h2" size="md">
+              How it works (Discord, mobile)
+            </Heading>
+          </Flex>
+          <Flex justify="center">
+            <iframe width="550" height="310" src="https://www.youtube.com/embed/sKlO-VXfhj4"></iframe>
           </Flex>
         </Box>
       </Grid>
       <Grid>
-        <Box w="100%" paddingTop="40px" paddingBottom="40px" textAlign="center" bg="#F9F9F9">
+        <Box w="100%" padding="40px" textAlign="center">
+          <Flex justify="center" paddingBottom="20px">
+            <Heading as="h2" size="md">
+              How it works (Telegram, mobile)
+            </Heading>
+          </Flex>
+          <Flex justify="center">
+            <iframe width="550" height="310" src="https://www.youtube.com/embed/1s6PzfmCgHI"></iframe>
+          </Flex>
+        </Box>
+      </Grid>
+      <Grid>
+        <Box w="100%" padding="40px" textAlign="center" bg="#F9F9F9">
           Communication between TzTip and wallets is using the beacon network, a distributed P2P network. Anyone can
           participate.
           <Link href="https://walletbeacon.io" isExternal>
@@ -69,7 +129,7 @@ const App = () => {
       </Grid>
 
       <Grid>
-        <Box w="100%" paddingTop="40px" paddingBottom="40px" textAlign="center" bg="#F9F9F9">
+        <Box w="100%" padding="40px" textAlign="center" bg="#F9F9F9">
           <Link href="https://airgap.it" isExternal>
             <img src={AirGap} width="200px"></img>
           </Link>
@@ -77,7 +137,7 @@ const App = () => {
       </Grid>
 
       <Grid>
-        <Box w="100%" paddingTop="40px" paddingBottom="40px" textAlign="center">
+        <Box w="100%" padding="40px" textAlign="center">
           <Text>Made with ☕ and 🍫 in Switzerland</Text>
         </Box>
       </Grid>
