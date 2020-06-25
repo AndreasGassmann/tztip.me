@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.js": "/static/js/main.cf59ef78.chunk.js",
-    "main.js.map": "/static/js/main.cf59ef78.chunk.js.map",
+    "main.js": "/static/js/main.f357bd36.chunk.js",
+    "main.js.map": "/static/js/main.f357bd36.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.84cfcdfc.js",
     "runtime-main.js.map": "/static/js/runtime-main.84cfcdfc.js.map",
-    "static/js/2.be70f481.chunk.js": "/static/js/2.be70f481.chunk.js",
-    "static/js/2.be70f481.chunk.js.map": "/static/js/2.be70f481.chunk.js.map",
+    "static/js/2.5110e00e.chunk.js": "/static/js/2.5110e00e.chunk.js",
+    "static/js/2.5110e00e.chunk.js.map": "/static/js/2.5110e00e.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.824c9302eb4286cae466e9999afb6f5c.js": "/precache-manifest.824c9302eb4286cae466e9999afb6f5c.js",
+    "precache-manifest.a60c2e7c31e61b576f6f892e4e4a4f3b.js": "/precache-manifest.a60c2e7c31e61b576f6f892e4e4a4f3b.js",
     "service-worker.js": "/service-worker.js",
-    "static/js/2.be70f481.chunk.js.LICENSE.txt": "/static/js/2.be70f481.chunk.js.LICENSE.txt",
+    "static/js/2.5110e00e.chunk.js.LICENSE.txt": "/static/js/2.5110e00e.chunk.js.LICENSE.txt",
     "static/media/airgap_logo.svg": "/static/media/airgap_logo.38eff924.svg",
     "static/media/beacon-logo.svg": "/static/media/beacon-logo.944018ec.svg",
     "static/media/logo.png": "/static/media/logo.476721ba.png",
@@ -17,7 +17,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.84cfcdfc.js",
-    "static/js/2.be70f481.chunk.js",
-    "static/js/main.cf59ef78.chunk.js"
+    "static/js/2.5110e00e.chunk.js",
+    "static/js/main.f357bd36.chunk.js"
   ]
 }
