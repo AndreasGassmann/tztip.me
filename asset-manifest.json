@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.js": "/static/js/main.a9a085a8.chunk.js",
+    "main.js.map": "/static/js/main.a9a085a8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.84cfcdfc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.84cfcdfc.js.map",
+    "static/js/2.45cc8f0e.chunk.js": "/static/js/2.45cc8f0e.chunk.js",
+    "static/js/2.45cc8f0e.chunk.js.map": "/static/js/2.45cc8f0e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7e0332fc54ecf09d44c7a5347ca16dd4.js": "/precache-manifest.7e0332fc54ecf09d44c7a5347ca16dd4.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.45cc8f0e.chunk.js.LICENSE.txt": "/static/js/2.45cc8f0e.chunk.js.LICENSE.txt",
+    "static/media/airgap_logo.svg": "/static/media/airgap_logo.38eff924.svg",
+    "static/media/beacon-logo.svg": "/static/media/beacon-logo.944018ec.svg",
+    "static/media/logo.png": "/static/media/logo.476721ba.png",
+    "static/media/name.png": "/static/media/name.48a50fb3.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.84cfcdfc.js",
+    "static/js/2.45cc8f0e.chunk.js",
+    "static/js/main.a9a085a8.chunk.js"
+  ]
+}
