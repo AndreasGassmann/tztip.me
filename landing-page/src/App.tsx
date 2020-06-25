@@ -25,13 +25,13 @@ const App = () => {
           </Flex>
 
           <Flex paddingTop="50px" justify="center">
-            <Link href="https://tztip.me" isExternal>
+            <Link href="https://discord.gg/bDXqrdS" isExternal>
               <Button margin="10px">
                 <Box as={FaDiscord} />
                 <Text paddingLeft="10px">Discord</Text>
               </Button>
             </Link>
-            <Link href="https://tztip.me" isExternal>
+            <Link href="https://telegram.me/tztipbot" isExternal>
               <Button margin="10px">
                 <Box as={FaTelegram} />
                 <Text paddingLeft="10px">Telegram</Text>
