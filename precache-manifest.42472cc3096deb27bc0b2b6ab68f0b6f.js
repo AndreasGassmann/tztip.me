@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3412c5c6ee18f836e2511e0086f654a1",
+    "revision": "cdadd473088d7d1cfd6f92555d203896",
     "url": "/tztip.me/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/tztip.me/static/js/2.be70f481.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8123afdd6a4ff06dc966",
-    "url": "/tztip.me/static/js/main.d43f6248.chunk.js"
+    "revision": "09fd374fce64a4a6801a",
+    "url": "/tztip.me/static/js/main.150c254f.chunk.js"
   },
   {
     "revision": "c3fddc52318968bcdf28",
