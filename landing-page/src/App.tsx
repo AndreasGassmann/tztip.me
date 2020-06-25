@@ -54,7 +54,7 @@ const App = () => {
             </Heading>
           </Flex>
           <Flex justify="center">
-            <iframe width="420" height="315" src="https://www.youtube.com/watch?v=jprOA6Paq4o"></iframe>
+            <iframe width="550" height="310" src="https://www.youtube.com/embed/jprOA6Paq4o"></iframe>
           </Flex>
         </Box>
       </Grid>
