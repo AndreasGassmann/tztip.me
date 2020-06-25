@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "98f9b598840036d3db5f0e6e58d90cd4",
+    "revision": "3412c5c6ee18f836e2511e0086f654a1",
     "url": "/tztip.me/index.html"
   },
   {
-    "revision": "bbe5864e700b242f5d15",
-    "url": "/tztip.me/static/js/2.45cc8f0e.chunk.js"
+    "revision": "9ad18da051747ec3b40c",
+    "url": "/tztip.me/static/js/2.be70f481.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/tztip.me/static/js/2.45cc8f0e.chunk.js.LICENSE.txt"
+    "url": "/tztip.me/static/js/2.be70f481.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "ce34142a855dcab65c4a",
-    "url": "/tztip.me/static/js/main.0fd426a8.chunk.js"
+    "revision": "8123afdd6a4ff06dc966",
+    "url": "/tztip.me/static/js/main.d43f6248.chunk.js"
   },
   {
     "revision": "c3fddc52318968bcdf28",
