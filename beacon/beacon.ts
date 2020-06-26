@@ -57,7 +57,6 @@ db.all(
       const element = clients[userKey];
       if (!element) {
         const response = await initBeacon(user, false);
-        (response[0] as DAppClient).requestPermissions().then(console.log);
 
         clients[userKey] = {
           client: response[0] as DAppClient,
