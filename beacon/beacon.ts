@@ -149,7 +149,7 @@ const getUserKey = (user: User) => {
 
 const getUserFromDb = (user: User): Promise<{ address: string }> => {
   return new Promise((resolve, reject) => {
-    db.each(
+    db.all(
       `
 			SELECT * FROM users WHERE provider = "${user.provider}" AND userId = "${user.id}"
 			`,
@@ -157,7 +157,11 @@ const getUserFromDb = (user: User): Promise<{ address: string }> => {
         if (err) {
           return reject(err);
         }
-        resolve(res);
+        if (res.length > 0) {
+          resolve(res[0]);
+        } else {
+          resolve(undefined);
+        }
       }
     );
   });
@@ -186,11 +190,11 @@ const tip = async (from: User, recipients: Recipient[]) => {
       recipients.map(async (recipient) => {
         const userInfo = await getUserFromDb(recipient.user);
         if (!userInfo) {
+          console.log('NO INFO FOUND FOR RECIPIENT', recipient);
           Axios.post(`${from.provider === Provider.DISCORD ? discordUrl : telegramUrl}/bot/unregistered`, {
             from: from,
             recipient: recipient,
           });
-          console.log('NO INFO FOUND FOR RECIPIENT', recipient);
         }
         return {
           kind: TezosOperationType.TRANSACTION,

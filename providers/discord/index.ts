@@ -69,6 +69,7 @@ app.post('/bot/unregistered', async (req, res) => {
     recipient: Recipient;
   } = req.body;
 
+  console.log('/bot/unregistered', response);
   client.users
     .resolve(response.recipient.user.id)
     .send(
