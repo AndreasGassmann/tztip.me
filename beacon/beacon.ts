@@ -181,19 +181,25 @@ const connect = async (user: User): Promise<P2PPairInfo> => {
 const tip = async (from: User, recipients: Recipient[]) => {
   console.log('from', from);
   console.log('recipients', recipients);
-  const operations = await Promise.all(
-    recipients.map(async (recipient) => {
-      const userInfo = await getUserFromDb(recipient.user);
-      if (!userInfo) {
-        console.log('NO INFO FOUND FOR RECIPIENT', recipient);
-      }
-      return {
-        kind: TezosOperationType.TRANSACTION,
-        amount: recipient.amount,
-        destination: userInfo.address,
-      };
-    })
-  );
+  const operations = (
+    await Promise.all(
+      recipients.map(async (recipient) => {
+        const userInfo = await getUserFromDb(recipient.user);
+        if (!userInfo) {
+          Axios.post(`${from.provider === Provider.DISCORD ? discordUrl : telegramUrl}/bot/unregistered`, {
+            from: from,
+            recipient: recipient,
+          });
+          console.log('NO INFO FOUND FOR RECIPIENT', recipient);
+        }
+        return {
+          kind: TezosOperationType.TRANSACTION,
+          amount: recipient.amount,
+          destination: userInfo ? userInfo.address : undefined,
+        };
+      })
+    )
+  ).filter((operation) => operation.destination !== undefined);
 
   const element = clients[getUserKey(from)];
   if (element) {

@@ -1,11 +1,11 @@
 require('dotenv').config();
-import { TipResponse, AccountInfoResponse, Provider } from '../../beacon/types';
+import { TipResponse, AccountInfoResponse, Provider, Recipient } from '../../beacon/types';
 const axios = require('axios');
 
 const QRCode = require('qrcode');
 var MemoryStream = require('memorystream');
 
-import { Client } from 'discord.js';
+import { Client, User } from 'discord.js';
 
 const Discord = require('discord.js');
 const client = new Client();
@@ -59,6 +59,21 @@ app.post('/bot/sent', async (req, res) => {
     .send(`Transaction sent! https://tezblock.io/transaction/${tipResponse.transactionId}`);
 
   // TODO: Send notifications to recipients
+
+  return res.send('ok');
+});
+
+app.post('/bot/unregistered', async (req, res) => {
+  const response: {
+    from: User;
+    recipient: Recipient;
+  } = req.body;
+
+  client.users
+    .resolve(response.recipient.user.id)
+    .send(
+      `Hey, someone just tried to send you a tip of ${response.recipient.amount}. User !setaddress <your tz address> or user !connect to connect your wallet.`
+    );
 
   return res.send('ok');
 });
