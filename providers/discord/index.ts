@@ -101,7 +101,7 @@ client.on('message', async (msg) => {
     client.users.resolve(msg.author.id).send(`Scan this with a beacon compatible wallet!`, attachment);
     client.users.resolve(msg.author.id).send(JSON.stringify(response.data));
   }
-  if (msg.content.toLowerCase() === '!setaddress') {
+  if (msg.content.toLowerCase().startsWith('!setaddress')) {
     const address = msg.content.split(' ')[1];
     msg.channel.send(`Your address has been set to ${address}!`);
 
