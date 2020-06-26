@@ -1,0 +1,27 @@
+{
+  "beacon:sdk_version": "1.0.0",
+  "beacon:sdk-secret-seed": "af3e2fcc-9048-40ce-b0f4-42f54fb01016",
+  "beacon:communication-peers": [
+    {
+      "name": "",
+      "publicKey": "c379077bdc7ae6d40348ababd1925edf27b4e8b1053c6b8402e77ea4f20034f3",
+      "relayServer": ""
+    }
+  ],
+  "beacon:accounts": [
+    {
+      "accountIdentifier": "yQxM85PrJ718CA1N6oz",
+      "beaconId": "c379077bdc7ae6d40348ababd1925edf27b4e8b1053c6b8402e77ea4f20034f3",
+      "origin": {
+        "type": "p2p",
+        "id": "c379077bdc7ae6d40348ababd1925edf27b4e8b1053c6b8402e77ea4f20034f3"
+      },
+      "address": "tz1d75oB6T4zUMexzkr5WscGktZ1Nss1JrT7",
+      "publicKey": "444e1f4ab90c304a5ac003d367747aab63815f583ff2330ce159d12c1ecceba1",
+      "network": { "type": "mainnet" },
+      "scopes": ["sign", "operation_request"],
+      "connectedAt": 1593022634527
+    }
+  ],
+  "beacon:active-account": "yQxM85PrJ718CA1N6oz"
+}

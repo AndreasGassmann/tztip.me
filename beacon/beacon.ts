@@ -1,10 +1,10 @@
-import { FileStorage } from './FileStorage';
 import Axios from 'axios';
 
 import { P2PPairInfo, DAppClient, BeaconEvent, TezosOperationType } from '@airgap/beacon-sdk';
 import { User, Recipient, Provider } from './types';
 import { discordUrl, telegramUrl } from './constants';
 import * as sqlite3Package from 'sqlite3';
+import { SqlStorage } from './SqlStorage';
 
 const sqlite3 = sqlite3Package.verbose();
 var db = new sqlite3.Database('./storage/database.db');
@@ -17,40 +17,56 @@ db.run(
 		"address"	TEXT,
 		"amount"	TEXT,
 		"transactionId"	TEXT,
-		"createdAt"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+		"createdAt"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		PRIMARY KEY("provider","userId")
 	);
 	`,
   (err, res) => {
-    console.log(res);
+    console.log('user table created', res);
   }
 );
 
-// setTimeout(() => {
-//   db.all(
-//     `
-// 		SELECT * FROM users
-// 		`,
-//     (err, res) => {
-//       if (!res) {
-//         return;
-//       }
-//       res.forEach(async (userRaw) => {
-//         const user = { provider: userRaw.provider, id: userRaw.userId };
-//         const userKey = getUserKey(user);
-//         const element = clients[userKey];
-//         if (!element) {
-//           const response = await initBeacon(user, true);
-//           // (response[0] as DAppClient).requestPermissions().then(console.log);
+db.run(
+  `
+	CREATE TABLE "beacon" (
+		"provider"	TEXT NOT NULL,
+		"userId"	TEXT NOT NULL,
+		"key"	TEXT,
+		"value"	TEXT,
+		"createdAt"	TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		PRIMARY KEY("provider","userId","key")
+	);
+	`,
+  (err, res) => {
+    console.log('beacon table created', res);
+  }
+);
 
-//           clients[userKey] = {
-//             client: response[0] as DAppClient,
-//             qr: response[1] as P2PPairInfo,
-//           };
-//         }
-//       });
-//     }
-//   );
-// }, 2000);
+db.all(
+  `
+		SELECT * FROM users
+		`,
+  (err, res) => {
+    if (!res) {
+      return;
+    }
+    console.log(res);
+    res.forEach(async (userRaw) => {
+      const user = { provider: userRaw.provider, id: userRaw.userId };
+      const userKey = getUserKey(user);
+      const element = clients[userKey];
+      if (!element) {
+        const response = await initBeacon(user, false);
+        (response[0] as DAppClient).requestPermissions().then(console.log);
+
+        clients[userKey] = {
+          client: response[0] as DAppClient,
+          qr: response[1] as P2PPairInfo,
+        };
+      }
+    });
+  }
+);
 
 const emptyHandler = {
   handler: async () => {},
@@ -67,7 +83,7 @@ const initBeacon = async (user: User, sendPermissionRequest: boolean = true) => 
 
   const beaconInstance = new DAppClient({
     name: 'TzTip.me',
-    storage: new FileStorage(`./storage/${getUserKey(user)}.json`),
+    storage: new SqlStorage(db, user),
     eventHandlers: {
       [BeaconEvent.P2P_LISTEN_FOR_CHANNEL_OPEN]: {
         // Every BeaconEvent can be overriden by passing a handler here.

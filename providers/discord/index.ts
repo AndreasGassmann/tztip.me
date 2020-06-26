@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { TipResponse, AccountInfoResponse, Provider } from '../../beacon/types';
 const axios = require('axios');
 
@@ -81,19 +82,6 @@ client.on('message', async (msg) => {
     const attachment = new Discord.MessageAttachment(memStream, 'beacon.png');
     client.users.resolve(msg.author.id).send(`Scan this with a beacon compatible wallet!`, attachment);
     client.users.resolve(msg.author.id).send(JSON.stringify(response.data));
-    // var qr_svg = qr.image(JSON.stringify(response.data), { type: 'png' });
-    // var writeStream = fs.createWriteStream('qr.png')
-    // qr_svg.pipe(writeStream);
-    // writeStream.on('finish', () => {
-    // 		fs.readFile('qr.png', function (err, data) {
-    // 				if (err) throw err; // Fail if the file can't be read.
-    // 				telegramBot.sendPhoto(msg.chat.id, data)
-    // 		});
-    // });
-    // setTimeout(() => {
-    //   console.log("globalSyncInfo", JSON.stringify(globalSyncInfo));
-    //
-    // }, 10000);
   }
   if (msg.content === '!permission') {
     msg.channel.send(`Request has been sent to your wallet!`);
@@ -159,4 +147,4 @@ client.on('message', async (msg) => {
   }
 });
 
-client.login('');
+client.login(process.env.DISCORD_BOT_TOKEN);

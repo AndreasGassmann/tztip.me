@@ -1,3 +1,4 @@
+require('dotenv').config();
 import TelegramBot from 'node-telegram-bot-api';
 import express from 'express';
 import { TipResponse, AccountInfoResponse } from '../../beacon/types';
@@ -5,10 +6,7 @@ const qr = require('qr-image');
 const fs = require('fs');
 const axios = require('axios');
 
-const telegramBot = new TelegramBot(
-  process.env.TELEGRAM_TOKEN ? process.env.TELEGRAM_TOKEN : '',
-  { polling: true }
-);
+const telegramBot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 const app = express();
 app.use(express.json());
 

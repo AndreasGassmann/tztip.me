@@ -85,6 +85,10 @@ const App = () => {
             </ListItem>
             <ListItem>
               <ListIcon icon="check-circle" color="green.500" />
+              Tip to one or multiple people in one transaction
+            </ListItem>
+            <ListItem>
+              <ListIcon icon="check-circle" color="green.500" />
               Send transactions, delegation requests and contract calls
             </ListItem>
             <ListItem>
