@@ -1,5 +1,5 @@
 import { InitRequest, SetAddressRequest, TipRequest, TipResponse, InitResponse, Provider } from './types';
-import { connect, tip } from './beacon';
+import { connect, tip, setAddress } from './beacon';
 
 import express = require('express');
 import Axios from 'axios';
@@ -39,10 +39,9 @@ app.post('/beacon/init', async (req, res) => {
 app.post('/beacon/set-address', function (req, res) {
   const body: SetAddressRequest = req.body;
 
-  // set db
-  const address: string | undefined = undefined;
+  setAddress(body.user, body.address);
 
-  res.json({ success: false });
+  res.json({ success: true });
 });
 
 app.post('/beacon/tip', function (req, res) {

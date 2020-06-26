@@ -217,4 +217,14 @@ const tip = async (from: User, recipients: Recipient[]) => {
   }
 };
 
-export { connect, tip };
+const setAddress = (user: User, address: string) => {
+  db.exec(
+    `INSERT OR REPLACE INTO users (provider, userId, address)
+		VALUES ("${user.provider}", "${user.id}", "${address}")`, // TODO: prepared statements
+    function (res: any) {
+      console.log(res);
+    }
+  );
+};
+
+export { connect, tip, setAddress };

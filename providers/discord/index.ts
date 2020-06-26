@@ -73,7 +73,9 @@ app.post('/bot/unregistered', async (req, res) => {
   client.users
     .resolve(response.recipient.user.id)
     .send(
-      `Hey, someone just tried to send you a tip of ${response.recipient.amount}. User !setaddress <your tz address> or user !connect to connect your wallet.`
+      `Hey, someone just tried to send you a tip of ${
+        parseInt(response.recipient.amount) / 1000000
+      }tz. User !setaddress <your tz address> or user !connect to connect your wallet.`
     );
 
   return res.send('ok');
@@ -99,45 +101,14 @@ client.on('message', async (msg) => {
     client.users.resolve(msg.author.id).send(`Scan this with a beacon compatible wallet!`, attachment);
     client.users.resolve(msg.author.id).send(JSON.stringify(response.data));
   }
-  if (msg.content === '!permission') {
-    msg.channel.send(`Request has been sent to your wallet!`);
+  if (msg.content.toLowerCase() === '!setaddress') {
+    const address = msg.content.split(' ')[1];
+    msg.channel.send(`Your address has been set to ${address}!`);
 
-    // const response = await beaconClient.requestPermissions();
-
-    // msg.channel.send({
-    //   content: "Permission granted",
-    //   embed: {
-    //     url: "https://walletbeacon.io",
-    //     color: 1946875,
-    //     timestamp: new Date(),
-    //     footer: {
-    //       icon_url: "https://www.walletbeacon.io/assets/icon/favicon.png",
-    //       text: "Beacon",
-    //     },
-    //     thumbnail: {
-    //       url: "https://www.walletbeacon.io/assets/icon/favicon.png",
-    //     },
-    //     author: {
-    //       name: "AirGap Wallet",
-    //       url: "https://walletbeacon.io",
-    //       icon_url: "https://www.walletbeacon.io/assets/icon/favicon.png",
-    //     },
-    //     fields: [
-    //       {
-    //         name: "Address",
-    //         value: response.address,
-    //       },
-    //       {
-    //         name: "Network",
-    //         value: response.network.type,
-    //       },
-    //       {
-    //         name: "Scopes",
-    //         value: response.scopes,
-    //       },
-    //     ],
-    //   },
-    // });
+    await axios.post(beaconUrl + '/beacon/set-address', {
+      user: { provider: Provider.DISCORD, id: msg.author.id },
+      address: address,
+    });
   }
   if (msg.content.startsWith('!tip')) {
     msg.reply('Sent request to your wallet!');
