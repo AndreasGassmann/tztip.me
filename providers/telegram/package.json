@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "a tezos tip bot for telegram",
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "build": "tsc"
   },
   "author": "Lukas Schönbächler",
   "license": "MIT",
